@@ -19,6 +19,8 @@ package com.github.amlcurran.showcaseview;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 
 /**
  * Created by curraa01 on 13/10/2013.
@@ -42,6 +44,7 @@ class NewShowcaseDrawer extends StandardShowcaseDrawer {
 
     @Override
     public void drawShowcase(Bitmap buffer, float x, float y, float scaleMultiplier) {
+        eraserPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
         Canvas bufferCanvas = new Canvas(buffer);
         eraserPaint.setAlpha(ALPHA_60_PERCENT);
         bufferCanvas.drawCircle(x, y, outerRadius, eraserPaint);
